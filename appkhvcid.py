@@ -70,4 +70,4 @@ def main():
                     st.error(result["data"])
 
 if __name__ == "__main__":
-    main()appkhvcid.py
+    main()
