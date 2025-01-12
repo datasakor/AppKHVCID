@@ -3,8 +3,8 @@ import requests
 
 # domainname: appkhvcid.streamlit.app
 # Define your Google reCAPTCHA keys
-RECAPTCHA_SITE_KEY = "6LdeLLUqAAAAAKaNbKFF5duwKxclxlDYoXyVlSsG"  # Replace with your Site Key
-RECAPTCHA_SECRET_KEY = "6LdeLLUqAAAAAH4ADow9bM3Ol23r8pOy0IthENhf"  # Replace with your Secret Key
+RECAPTCHA_SITE_KEY = "6LdjLrUqAAAAAKugEs1clSnzWyEv4HJDFDdCryvO"  # Replace with your Site Key
+RECAPTCHA_SECRET_KEY = "6LdjLrUqAAAAAI0_TkjGwOjbmIPbj-SCAhUiyQt2"  # Replace with your Secret Key
 
 # Function to verify reCAPTCHA response
 def verify_recaptcha(token):
