@@ -63,7 +63,7 @@ def main():
                 st.error("Invalid reCAPTCHA. Please try again.")
             else:
                 # Perform the search
-                result = search_vac_info_detail(id_number, birthdate.strftime("%Y-%m-%d"))
+                result = search_vac_info_detail(id_number, birthdate.strftime("%d-%m-%Y"))
                 if result["status"] == "success":
                     st.success(result["data"])
                 else:
