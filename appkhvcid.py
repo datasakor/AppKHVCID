@@ -44,6 +44,15 @@ def main():
             }});
           }});
         </script>
+        <script src="https://www.google.com/recaptcha/enterprise.js?render={RECAPTCHA_SITE_KEY}"></script>
+        <script>
+          grecaptcha.ready(function() {
+            grecaptcha.execute('{RECAPTCHA_SITE_KEY}', {action: 'submit'}).then(function(token) {
+              window.parent.postMessage(token, "*");  // Send token to Streamlit
+            });
+          });
+        </script>
+        
         <input type="hidden" id="recaptcha-token" name="recaptcha-token">
         """,
         height=150,
