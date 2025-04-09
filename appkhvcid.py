@@ -33,30 +33,45 @@ def main():
     id_number = st.text_input("Enter ID Number:")
     birthdate = st.date_input("Enter Birthdate:")
 
-    # Embed reCAPTCHA widget
+
     st.components.v1.html(
-        f"""
-        <script src="https://www.google.com/recaptcha/enterprise.js?render={RECAPTCHA_SITE_KEY}"></script>
-        <script>
-          grecaptcha.ready(function() {{
-            grecaptcha.execute('{RECAPTCHA_SITE_KEY}', {{action: 'submit'}}).then(function(token) {{
-              document.getElementById("recaptcha-token").value = token;
-            }});
-          }});
-        </script>
-        <script src="https://www.google.com/recaptcha/enterprise.js?render={RECAPTCHA_SITE_KEY}"></script>
-        <script>
-          grecaptcha.ready(function() {
-            grecaptcha.execute('{RECAPTCHA_SITE_KEY}', {action: 'submit'}).then(function(token) {
-              window.parent.postMessage(token, "*");  // Send token to Streamlit
-            });
-          });
-        </script>
-        
-        <input type="hidden" id="recaptcha-token" name="recaptcha-token">
-        """,
-        height=150,
+    f"""
+    <script src="https://www.google.com/recaptcha/enterprise.js?render={RECAPTCHA_SITE_KEY}"></script>
+    <script>
+      grecaptcha.ready(function() {{
+        grecaptcha.execute("{RECAPTCHA_SITE_KEY}", {{action: 'submit'}}).then(function(token) {{
+          window.parent.postMessage(token, "*");  // Send token to Streamlit
+        }});
+      }});
+    </script>
+    """,
+    height=100,
     )
+
+    # Embed reCAPTCHA widget
+    # st.components.v1.html(
+    #     f"""
+    #     <script src="https://www.google.com/recaptcha/enterprise.js?render={RECAPTCHA_SITE_KEY}"></script>
+    #     <script>
+    #       grecaptcha.ready(function() {{
+    #         grecaptcha.execute('{RECAPTCHA_SITE_KEY}', {{action: 'submit'}}).then(function(token) {{
+    #           document.getElementById("recaptcha-token").value = token;
+    #         }});
+    #       }});
+    #     </script>
+    #     <script src="https://www.google.com/recaptcha/enterprise.js?render={RECAPTCHA_SITE_KEY}"></script>
+    #     <script>
+    #       grecaptcha.ready(function() {
+    #         grecaptcha.execute('{RECAPTCHA_SITE_KEY}', {action: 'submit'}).then(function(token) {
+    #           window.parent.postMessage(token, "*");  // Send token to Streamlit
+    #         });
+    #       });
+    #     </script>
+        
+    #     <input type="hidden" id="recaptcha-token" name="recaptcha-token">
+    #     """,
+    #     height=150,
+    # )
 
     # Read reCAPTCHA token
     recaptcha_token = st.text_input("ReCAPTCHA Token", key="recaptcha_token", label_visibility="hidden")
