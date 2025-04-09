@@ -48,30 +48,27 @@ def main():
     height=100,
     )
 
-    # Embed reCAPTCHA widget
-    # st.components.v1.html(
-    #     f"""
-    #     <script src="https://www.google.com/recaptcha/enterprise.js?render={RECAPTCHA_SITE_KEY}"></script>
-    #     <script>
-    #       grecaptcha.ready(function() {{
-    #         grecaptcha.execute('{RECAPTCHA_SITE_KEY}', {{action: 'submit'}}).then(function(token) {{
-    #           document.getElementById("recaptcha-token").value = token;
-    #         }});
-    #       }});
-    #     </script>
-    #     <script src="https://www.google.com/recaptcha/enterprise.js?render={RECAPTCHA_SITE_KEY}"></script>
-    #     <script>
-    #       grecaptcha.ready(function() {
-    #         grecaptcha.execute('{RECAPTCHA_SITE_KEY}', {action: 'submit'}).then(function(token) {
-    #           window.parent.postMessage(token, "*");  // Send token to Streamlit
-    #         });
-    #       });
-    #     </script>
-        
-    #     <input type="hidden" id="recaptcha-token" name="recaptcha-token">
-    #     """,
-    #     height=150,
-    # )
+    st.components.v1.html(
+        f"""
+        <title>Title</title>
+        <title>reCAPTCHA demo: Simple page</title>
+        <script src="https://www.google.com/recaptcha/enterprise.js?render=6LdjLrUqAAAAAKugEs1clSnzWyEv4HJDFDdCryvO"></script>
+        <script src="https://www.google.com/recaptcha/api.js"></script>
+        <div class="g-recaptcha" data-sitekey="{RECAPTCHA_SITE_KEY}" data-callback="recaptchaCallback"></div>
+        <script>
+        function recaptchaCallback(token) {{
+            // Send the token to Streamlit via a hidden input
+            const streamlitInput = window.parent.document.querySelectorAll("input[data-recaptcha='true']")[0];
+            if (streamlitInput) {{
+                streamlitInput.value = token;
+                streamlitInput.dispatchEvent(new Event("input", {{ bubbles: true }}));
+            }}
+        }}
+        </script>
+        <input type="hidden" data-recaptcha="true">
+        """,
+        height=150,
+    )
 
     # Read reCAPTCHA token
     recaptcha_token = st.text_input("ReCAPTCHA Token", key="recaptcha_token", label_visibility="hidden")
