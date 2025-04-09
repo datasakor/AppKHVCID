@@ -36,7 +36,7 @@ def main():
         <script src="https://www.google.com/recaptcha/enterprise.js?render={RECAPTCHA_SITE_KEY}"></script>
         <script>
           grecaptcha.ready(function() {
-            grecaptcha.execute('YOUR_SITE_KEY', {action: 'submit'}).then(function(token) {
+            grecaptcha.execute({RECAPTCHA_SITE_KEY}, {action: 'submit'}).then(function(token) {
               document.getElementById("recaptcha-token").value = token;
             });
           });
