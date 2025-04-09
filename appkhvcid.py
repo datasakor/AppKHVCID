@@ -33,19 +33,15 @@ def main():
     # Embed reCAPTCHA widget and JavaScript
     st.components.v1.html(
         f"""
-        <script src="https://www.google.com/recaptcha/api.js"></script>
-        <div class="g-recaptcha" data-sitekey="{RECAPTCHA_SITE_KEY}" data-callback="recaptchaCallback"></div>
+        <script src="https://www.google.com/recaptcha/enterprise.js?render={RECAPTCHA_SITE_KEY}"></script>
         <script>
-        function recaptchaCallback(token) {{
-            // Send the token to Streamlit via a hidden input
-            const streamlitInput = window.parent.document.querySelectorAll("input[data-recaptcha='true']")[0];
-            if (streamlitInput) {{
-                streamlitInput.value = token;
-                streamlitInput.dispatchEvent(new Event("input", {{ bubbles: true }}));
-            }}
-        }}
+          grecaptcha.ready(function() {
+            grecaptcha.execute('YOUR_SITE_KEY', {action: 'submit'}).then(function(token) {
+              document.getElementById("recaptcha-token").value = token;
+            });
+          });
         </script>
-        <input type="hidden" data-recaptcha="true">
+        <input type="hidden" id="recaptcha-token" name="recaptcha-token">
         """,
         height=150,
     )
