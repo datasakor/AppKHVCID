@@ -33,6 +33,7 @@ def main():
     # Embed reCAPTCHA widget and JavaScript
     st.components.v1.html(
         f"""
+        <script src="https://www.google.com/recaptcha/enterprise.js?render=6LdjLrUqAAAAAKugEs1clSnzWyEv4HJDFDdCryvO"></script>
         <script src="https://www.google.com/recaptcha/api.js"></script>
         <div class="g-recaptcha" data-sitekey="{RECAPTCHA_SITE_KEY}" data-callback="recaptchaCallback"></div>
         <script>
