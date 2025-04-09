@@ -3,7 +3,7 @@ import requests
 
 # domainname: appkhvcid.streamlit.app
 # Define your Google reCAPTCHA keys
-RECAPTCHA_SITE_KEY = "6LdjLrUqAAAAAKugEs1clSnzWyEv4HJDFDdCryvO"  # Replace with your Site Key
+RECAPTCHA_SITE_KEY = "6Lf35Q8rAAAAAJIoD4L-ABb19qZwqXUDrQQpoJb7"  # Replace with your Site Key
 RECAPTCHA_SECRET_KEY = "6LdjLrUqAAAAAI0_TkjGwOjbmIPbj-SCAhUiyQt2"  # Replace with your Secret Key
 
 # Function to verify reCAPTCHA response
