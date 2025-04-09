@@ -4,7 +4,7 @@ import requests
 # Domain name: appkhvcid.streamlit.app
 # Define your Google reCAPTCHA keys
 RECAPTCHA_SITE_KEY = "6Lf35Q8rAAAAAJIoD4L-ABb19qZwqXUDrQQpoJb7"  # Replace with your Site Key
-RECAPTCHA_SECRET_KEY = "6LdjLrUqAAAAAI0_TkjGwOjbmIPbj-SCAhUiyQt2"  # Replace with your Secret Key
+RECAPTCHA_SECRET_KEY = "6Lf35Q8rAAAAALGZ9988St-dIPOpeEwP1m5IhMSU"  # Replace with your Secret Key
 
 # Function to verify reCAPTCHA response
 def verify_recaptcha(token):
